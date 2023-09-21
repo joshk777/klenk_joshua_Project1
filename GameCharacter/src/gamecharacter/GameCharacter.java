@@ -1,65 +1,57 @@
 package gamecharacter;
 
 /**
+* The GameCharacter class represents a basic character with attributes such as name and health.
+* This class can be extended to create specialized character types.
 *@author Joshua Klenk
+*@version 1.0
 */
 
 public class GameCharacter 
 {
     
-    //Character attributes
-    private String characterName;
-    private int health;
-    private int maxHealth;
+    private String characterName; //name of character.
+    private int health; // The current health points of the character.
     
     /**
-    *Constructor
+    *Constructs a basic character that receives a specific name and health points.
     *
-    *Initializes the basic character information such as health & name
-     * @param newName name of the character being created
-     * @param initialHealth beginning health points
-     * @param maxHealth the maximum allowed health
+    *Initializes the basic character information such as health & name.
+     * @param newName name of the character being created.
+     * @param initialHealth beginning health points.
+     * 
     */
-    public GameCharacter(String newName, int initialHealth, int maxHealth)
+    public GameCharacter(String newName, int initialHealth)
     {
         characterName = newName;
         health = initialHealth;
-        maxHealth = 150;
+        
     }
     
     /**
-    *setName method allows the user to change their characters name
-    @param newName sets the characters name
+    *Sets the name of the character.
+    *
+    @param newName The name to be assigned to the character.
     */
     public void setName(String newName)
     {
         characterName = newName;
     }
+    
     /**
-    * setHealth method sets the characters health
-    * and limits that health between a range of 0 - 150
-    @param initialHealth characters health points
+    * Sets the health points of the character .
+    *
+    @param initialHealth The health points to be assigned to the character.
     */
     public void setHealth(int initialHealth)
     {
-        if(health < 0)
-        {
-            health = 0;
-        }
-        else if(health >= maxHealth)
-        {
-            health = maxHealth;
-        }
-        else
-        {
-            health = initialHealth;
-        }
+        health = initialHealth;
     }
     
     /**
-    * Returns the name of the character
+    * Retrieves the name of the character.
     *
-    @return the characters name
+    @return The name of the character as a string.
     */
     public String getName()
     {
@@ -67,9 +59,9 @@ public class GameCharacter
     }
     
     /**
-    * Returns the value of the characters health
+    * Returns the current health points of the character.
     *
-    @return the health of the character
+    @return The current health points as an integer.
     */
     public int getHealth()
     {
