@@ -34,30 +34,34 @@ public class GameCharacterDriver
         newName = keyboard.nextLine();
         myCharacter.setName(newName);
 
+        System.out.print("\nUpdate new health value: ");
+        updateHealth = keyboard.nextInt();
+        myCharacter.setHealth(updateHealth);
+        keyboard.nextLine();
+            
+        //Input validation for negative numbers.
         while(updateHealth < 0)
         {
-            System.out.print("\nUpdate new health value: ");
+            System.out.println("\nPlease enter a non negative number.");
+            System.out.print("Update new health value: ");
             updateHealth = keyboard.nextInt();
             myCharacter.setHealth(updateHealth);
             keyboard.nextLine();
-            
-            if(updateHealth < 0)
-            {
-                System.out.println("Please enter a non negative number.");
-            }
         }
         
+        System.out.print("\nUpdate new mana value: ");
+        updateMana = keyboard.nextInt();
+        myCharacter.setMana(updateMana);
+        keyboard.nextLine();
+        
+        //Input validation for negative numbers.
         while(updateMana < 0)
         {
-            System.out.print("\nUpdate new mana value: ");
+            System.out.println("\nPlease enter a non negative number.");
+            System.out.print("Update new mana value: ");
             updateMana = keyboard.nextInt();
             myCharacter.setMana(updateMana);
             keyboard.nextLine();
-            
-            if(updateMana < 0)
-            {
-                System.out.println("Please enter a non negative number.");
-            }
         }
         
         System.out.print("\nUpdate chosen spell: ");
