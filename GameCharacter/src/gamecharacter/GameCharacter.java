@@ -24,7 +24,6 @@ public class GameCharacter
     {
         characterName = newName;
         health = initialHealth;
-
     }
 
     /**

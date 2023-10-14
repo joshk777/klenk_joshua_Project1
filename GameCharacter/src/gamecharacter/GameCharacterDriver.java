@@ -70,7 +70,7 @@ public class GameCharacterDriver
         System.out.println();
 
         //Print the updated results.
-        System.out.printf("\n%-20s %-20s %-20s %-20s\n", "Character Name", "Total Health", "Total Mana", "Spell");
+        System.out.printf("%-20s %-20s %-20s %-20s\n", "Character Name", "Total Health", "Total Mana", "Spell");
         System.out.printf("%-20s %-,20d %-,20d %-20s\n", myCharacter.getName(), myCharacter.getHealth(),
                 myCharacter.getMana(), myCharacter.getSpell());
 

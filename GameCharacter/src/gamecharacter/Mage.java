@@ -68,5 +68,4 @@ public class Mage extends GameCharacter
     {
         return mana;
     }
-
 }
