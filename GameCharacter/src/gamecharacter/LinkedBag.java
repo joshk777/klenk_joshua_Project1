@@ -6,11 +6,6 @@ package gamecharacter;
  */
 public class LinkedBag <E>
 {
-    
-/**
- *
- * @author Joshua Klenk
- */
 
     private Node head;
     private Node tail;
