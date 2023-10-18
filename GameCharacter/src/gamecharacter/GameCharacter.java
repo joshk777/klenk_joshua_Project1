@@ -74,15 +74,15 @@ public class GameCharacter implements Comparable<GameCharacter>
     @throws ClassCastException 
     */
     @Override
-    public int compareTo(GameCharacter anotherCharacter) throws ClassCastException
+    public int compareTo(GameCharacter anotherCharacter) //throws ClassCastException
     {
         int returnValue;
-        
+        /**
         if(!(anotherCharacter instanceof GameCharacter))
         {
             throw new ClassCastException("GameCharacter pnject is expected.");
         }
-        
+       
         if(getHealth() < anotherCharacter.getHealth())
         {
             returnValue = -1;
@@ -95,7 +95,16 @@ public class GameCharacter implements Comparable<GameCharacter>
         {
             returnValue = characterName.compareToIgnoreCase(anotherCharacter.getName());
         }
+        */
         
+        if (characterName.equals(anotherCharacter.getName())) 
+        {
+            returnValue = 0;
+        } 
+        else 
+        {
+            returnValue = characterName.compareToIgnoreCase(anotherCharacter.getName());
+    }
         return returnValue;
     }
     

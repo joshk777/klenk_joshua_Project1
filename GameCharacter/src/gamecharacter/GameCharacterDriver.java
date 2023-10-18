@@ -38,9 +38,9 @@ public class GameCharacterDriver
             switch(command)
             {
                 case "A":
-                    System.out.print("Enter the name of the character: ");
+                    System.out.print("\nEnter the name of the character: ");
                     name = keyboard.next();
-                    System.out.print("\nEnter the health points: ");
+                    System.out.print("Enter the health points: ");
                     health = keyboard.nextInt();
                     
                     GameCharacter character = new GameCharacter(name, health);
@@ -49,7 +49,7 @@ public class GameCharacterDriver
                     System.out.println(name + " added to the bag. Health set to: " + health + "\n");
                     break;
                 case "R":
-                    System.out.print("Enter the characters name to remove: ");
+                    System.out.print("\nEnter the characters name to remove: ");
                     nameToRemove = keyboard.next();
                     System.out.print("Enter the characters health to remove: ");
                     healthToRemove = keyboard.nextInt();
@@ -66,7 +66,7 @@ public class GameCharacterDriver
                     }
                     break;
                 case "F":
-                    System.out.print("Enter the character's name to find: ");
+                    System.out.print("\nEnter the character's name to find: ");
                     nameToFind = keyboard.next();
                     System.out.print("Enter the character's health to find: ");
                     healthToFind = keyboard.nextInt();
@@ -82,7 +82,7 @@ public class GameCharacterDriver
                     }
                     break;
                 case "D":
-                    System.out.println("Bag contents:");
+                    System.out.println("\nBag contents:");
                     Lister<GameCharacter> iterator = gameCharacterBag.iterator();
                     
                     if(iterator.hasNext())
@@ -90,10 +90,10 @@ public class GameCharacterDriver
                     while(iterator.hasNext())
                     {
                         GameCharacter characterToDisplay = iterator.next();
-                        System.out.println("Character Name: " + characterToDisplay.getName());
-                        System.out.println("Health Point: " + characterToDisplay.getHealth());
+                        System.out.println("\nCharacter Name: " + characterToDisplay.getName());
+                        System.out.println("Health Point: " + characterToDisplay.getHealth() + "\n");
                     }
-                    System.out.println("Bag Size: " + gameCharacterBag.getSize() + "\n");
+                    System.out.println("\nBag Size: " + gameCharacterBag.getSize() + "\n");
                     }
                     else
                     {
