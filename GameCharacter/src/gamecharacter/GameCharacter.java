@@ -6,7 +6,7 @@ package gamecharacter;
  *@author Joshua Klenk
  *@version 1.1
  */
-public class GameCharacter 
+public class GameCharacter implements Comparable<GameCharacter>
 {
 
     private String characterName; //name of character.
@@ -73,7 +73,8 @@ public class GameCharacter
     @return -1 if this character has less health, 1 if this character has more health, or the result of characterName comparison.
     @throws ClassCastException 
     */
-    public boolean compareTo(GameCharacter anotherCharacter) throws ClassCastException
+    @Override
+    public int compareTo(GameCharacter anotherCharacter) throws ClassCastException
     {
         int returnValue;
         
@@ -95,7 +96,7 @@ public class GameCharacter
             returnValue = characterName.compareToIgnoreCase(anotherCharacter.getName());
         }
         
-        return false;
+        return returnValue;
     }
     
     /**

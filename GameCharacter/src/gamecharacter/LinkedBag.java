@@ -27,6 +27,35 @@ public class LinkedBag <E>
         return numElements;
     }
 
+    public void add(E newElement)
+    {
+        Node<E> newNode = new Node<>(newElement, null);
+
+        if (head == null || newNode.compareTo(head.getData()) < 0) 
+        {
+            newNode.setNext(head);
+            head = newNode;
+        } 
+        else 
+        {
+            Node<E> current = head;
+            Node<E> previous = null;
+
+        // Traverse the list to find the appropriate position
+        while (current != null && newNode.compareTo(current.getData()) >= 0) 
+        {
+            previous = current;
+            current = current.getNext();
+        }
+
+        // Insert the new element between previous and current
+        newNode.setNext(current);
+        previous.setNext(newNode);
+        }
+        
+        numElements++;
+    }
+    
     /**
      * Adds an element to the beginning of the list
      * @param newElement The element to add

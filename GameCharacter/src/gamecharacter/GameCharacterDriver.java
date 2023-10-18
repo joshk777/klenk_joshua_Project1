@@ -44,7 +44,7 @@ public class GameCharacterDriver
                     health = keyboard.nextInt();
                     
                     GameCharacter character = new GameCharacter(name, health);
-                    gameCharacterBag.appendList(character);
+                    gameCharacterBag.add(character);
                     
                     System.out.println(name + " added to the bag. Health set to: " + health + "\n");
                     break;
