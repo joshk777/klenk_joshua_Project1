@@ -4,7 +4,7 @@ package gamecharacter;
  * The GameCharacter class represents a basic character with attributes such as name and health.
  * This class can be extended to create specialized character types.
  *@author Joshua Klenk
- *@version 1.0
+ *@version 1.1
  */
 public class GameCharacter 
 {

@@ -16,65 +16,98 @@ public class GameCharacterDriver
     {
         //Instantiate the scanner object for user input.
         Scanner keyboard = new Scanner(System.in);
+        
+        boolean exit = false;
+        String command, name, nameToRemove, nameToFind;
+        int health, healthToRemove, healthToFind;
 
-        //Initialize variables for user input.
-        int updateMana = -1, updateHealth = -1;
-        String newName, newSpell;
-
-        //Creates a character object of the mage type.
-        Mage myCharacter = new Mage("Jackal", 200, 100, "Firebolt");
-
-        //Prints the hard coded information for the mage.
-        System.out.printf("\n%-20s %-20s %-20s %-20s\n", "Character Name", "Total Health", "Total Mana", "Spell");
-        System.out.printf("%-20s %-,20d %-,20d %-20s\n", myCharacter.getName(), myCharacter.getHealth(),
-                myCharacter.getMana(), myCharacter.getSpell());
-
-        //Gather user input for updating the mage object.
-        System.out.print("\nUpdate Character Name: ");
-        newName = keyboard.nextLine();
-        myCharacter.setName(newName);
-
-        System.out.print("\nUpdate new health value: ");
-        updateHealth = keyboard.nextInt();
-        myCharacter.setHealth(updateHealth);
-        keyboard.nextLine();
+        LinkedBag<GameCharacter> gameCharacterBag = new LinkedBag<GameCharacter>(); // creates a linked bag
+        
+        while(!exit)
+        {
+            System.out.println("Bag of GameCharacters");
+            System.out.println("Menus:");
+            System.out.println("A - Add a character to the bag.");
+            System.out.println("R - Remove a character from the bag.");
+            System.out.println("F - Find a character in the bag.");
+            System.out.println("D - Display contents of the bag.");
+            System.out.println("X - Exit");
             
-        //Input validation for negative numbers.
-        while(updateHealth < 0)
-        {
-            System.out.println("\nPlease enter a non negative number.");
-            System.out.print("Update new health value: ");
-            updateHealth = keyboard.nextInt();
-            myCharacter.setHealth(updateHealth);
-            keyboard.nextLine();
-        }
-        
-        System.out.print("\nUpdate new mana value: ");
-        updateMana = keyboard.nextInt();
-        myCharacter.setMana(updateMana);
-        keyboard.nextLine();
-        
-        //Input validation for negative numbers.
-        while(updateMana < 0)
-        {
-            System.out.println("\nPlease enter a non negative number.");
-            System.out.print("Update new mana value: ");
-            updateMana = keyboard.nextInt();
-            myCharacter.setMana(updateMana);
-            keyboard.nextLine();
-        }
-        
-        System.out.print("\nUpdate chosen spell: ");
-        newSpell = keyboard.nextLine();
-        myCharacter.setSpell(newSpell);
-        System.out.println();
+            command = keyboard.next().toUpperCase();
+            
+            switch(command)
+            {
+                case "A":
+                    System.out.print("Enter the name of the character: ");
+                    name = keyboard.next();
+                    System.out.print("\nEnter the health points: ");
+                    health = keyboard.nextInt();
+                    
+                    GameCharacter character = new GameCharacter(name, health);
+                    gameCharacterBag.appendList(character);
+                    
+                    System.out.println(name + " added to the bag. Health set to: " + health + "\n");
+                    break;
+                case "R":
+                    System.out.print("Enter the characters name to remove: ");
+                    nameToRemove = keyboard.next();
+                    System.out.print("Enter the characters health to remove: ");
+                    healthToRemove = keyboard.nextInt();
+                    
+                    GameCharacter characterToRemove = new GameCharacter(nameToRemove, healthToRemove);
+                    
+                    if(gameCharacterBag.remove(characterToRemove))
+                    {
+                        System.out.println(nameToRemove + "removed from the bag.\n");
+                    }
+                    else
+                    {
+                        System.out.println(nameToRemove + " not found in the bag.\n");
+                    }
+                    break;
+                case "F":
+                    System.out.print("Enter the character's name to find: ");
+                    nameToFind = keyboard.next();
+                    System.out.print("Enter the character's health to find: ");
+                    healthToFind = keyboard.nextInt();
 
-        //Print the updated results.
-        System.out.printf("%-20s %-20s %-20s %-20s\n", "Character Name", "Total Health", "Total Mana", "Spell");
-        System.out.printf("%-20s %-,20d %-,20d %-20s\n", myCharacter.getName(), myCharacter.getHealth(),
-                myCharacter.getMana(), myCharacter.getSpell());
-
+                    GameCharacter characterToFind = new GameCharacter(nameToFind, healthToFind);
+                    if (gameCharacterBag.exists(characterToFind)) 
+                    {
+                        System.out.println(nameToFind + " exists in the bag.\n");
+                    } 
+                    else 
+                    {
+                        System.out.println(nameToFind + " does not exist in the bag.\n");
+                    }
+                    break;
+                case "D":
+                    System.out.println("Bag contents:");
+                    Lister<GameCharacter> iterator = gameCharacterBag.iterator();
+                    
+                    if(iterator.hasNext())
+                    {
+                    while(iterator.hasNext())
+                    {
+                        GameCharacter characterToDisplay = iterator.next();
+                        System.out.println("Character Name: " + characterToDisplay.getName());
+                        System.out.println("Health Point: " + characterToDisplay.getHealth());
+                    }
+                    System.out.println("Bag Size: " + gameCharacterBag.getSize() + "\n");
+                    }
+                    else
+                    {
+                        System.out.print("Character Bag [--Empty--] \tSize: " + gameCharacterBag.getSize() + "\n");
+                    }
+                    break;
+                case "X":
+                    exit = true;
+                    System.out.println("Good-Bye");
+                    break;
+                default:
+                    System.out.println("Invalid command. Please try again.\n");
+            }
+        }
         keyboard.close();
-
     }
 }

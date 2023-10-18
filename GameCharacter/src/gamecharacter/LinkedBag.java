@@ -207,10 +207,8 @@ public class LinkedBag <E>
                 cursorOfListToCopy = cursorOfListToCopy.getNext();
             }
         }
-
         return new Lister(headOfListToReturn);
     }
-
 }
 
 
