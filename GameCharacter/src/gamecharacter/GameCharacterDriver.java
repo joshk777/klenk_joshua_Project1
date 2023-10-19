@@ -6,8 +6,8 @@ import java.util.Scanner;
  *The Game Character driver is a driver program for creating and interacting with
  *various characters
  *
- * @author Joshua Klenk
- *@version 1.0
+ @author Joshua Klenk
+ @version 1.0
  */
 public class GameCharacterDriver 
 {

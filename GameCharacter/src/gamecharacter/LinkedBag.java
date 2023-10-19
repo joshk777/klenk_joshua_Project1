@@ -26,6 +26,11 @@ public class LinkedBag<E extends Comparable<E>> {
         return numElements;
     }
 
+    /**
+     * Adds an element in alphabetical order to the list
+     *
+     * @param newElement The element to add
+     */
     public void add(E newElement) 
     {
         Node<E> newNode = new Node<>(newElement, null);
