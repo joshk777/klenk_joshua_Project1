@@ -5,13 +5,15 @@ package gamecharacter;
  * @author Joshua Klenk
  * @version 1.0
  */
-public class LinkedBag<E extends Comparable<E>> {
+public class LinkedBag<E extends Comparable<E>> 
+{
 
     private Node<E> head;
     private Node<E> tail;
     private int numElements;
 
-    public LinkedBag() {
+    public LinkedBag() 
+    {
         head = null;
         tail = null;
         numElements = 0;
@@ -22,7 +24,8 @@ public class LinkedBag<E extends Comparable<E>> {
      *
      * @return numElements The amount of nodes in the list.
      */
-    public int getSize() {
+    public int getSize() 
+    {
         return numElements;
     }
 
@@ -54,11 +57,9 @@ public class LinkedBag<E extends Comparable<E>> {
             {
                 current = current.getNext();
             }
-
             newNode.setNext(current.getNext());
             current.setNext(newNode);
         }
-
         numElements++;
     }
 
@@ -67,20 +68,24 @@ public class LinkedBag<E extends Comparable<E>> {
      *
      * @param newElement The element to add
      */
-    public void appendList(E newElement) {
+    public void appendList(E newElement) 
+    {
         Node<E> newNode = new Node<>(newElement, null);
 
-        if (head == null) {
+        if (head == null) 
+        {
             head = newNode;
-        } else {
+        } 
+        else 
+        {
             Node<E> current = head;
 
-            while (current.getNext() != null) {
+            while (current.getNext() != null) 
+            {
                 current = current.getNext();
             }
             current.setNext(newNode);
         }
-
         numElements++;
     }
 
@@ -89,18 +94,20 @@ public class LinkedBag<E extends Comparable<E>> {
      *
      * @param newElement The element to add
      */
-    public void prependList(E newElement) {
-
-        if (tail == null) {
+    public void prependList(E newElement) 
+    {
+        if (tail == null) 
+        {
             head = new Node(newElement, null);
             tail = head;
-        } else {
+        } 
+        else 
+        {
             tail.setNext(new Node(newElement, null));
             tail = tail.getNext();
         }
-
+        
         numElements++;
-
     }
 
     /**
@@ -109,14 +116,19 @@ public class LinkedBag<E extends Comparable<E>> {
      * @param target the element to search for
      * @return true if the element is found in the list, false otherwise.
      */
-    public boolean exists(E target) {
+    public boolean exists(E target) 
+    {
         boolean found = false;
         Node<E> cursor = head;
 
-        while (cursor != null && !found) {
-            if (cursor.getData().equals(target)) {
+        while (cursor != null && !found) 
+        {
+            if (cursor.getData().equals(target)) 
+            {
                 found = true;
-            } else {
+            }
+            else 
+            {
                 cursor = cursor.getNext();
             }
         }
@@ -130,20 +142,25 @@ public class LinkedBag<E extends Comparable<E>> {
      * @param target the element to count.
      * @return The number of occurrences of the specific element
      */
-    public int countOccurences(E target) {
+    public int countOccurences(E target) 
+    {
         int count = 0;
         boolean found = false;
         Node<E> cursor = head;
 
-        while (cursor != null && !found) {
-            if (cursor.getData().equals(target)) {
+        while (cursor != null && !found) 
+        {
+            if (cursor.getData().equals(target)) 
+            {
                 count++;
                 cursor = cursor.getNext();
-            } else {
+            } 
+            else 
+            {
                 cursor = cursor.getNext();
             }
         }
-
+        
         return count;
     }
 
@@ -154,35 +171,45 @@ public class LinkedBag<E extends Comparable<E>> {
      * @param target the object to be removed.
      * @return Returns true if the target was found & removed, otherwise false.
      */
-    public boolean remove(E target) {
+    public boolean remove(E target) 
+    {
 
         Node<E> cursor = head, previous = null;
         boolean found = false;
 
-        while (cursor != null && !found) {
-            if (cursor.getData().equals(target)) {
+        while (cursor != null && !found) 
+        {
+            if (cursor.getData().equals(target)) 
+            {
                 found = true;
-            } else {
+            }
+            else 
+            {
                 previous = cursor;
                 cursor = cursor.getNext();
             }
         }
 
-        if (found && cursor != null) {
-            if (previous == null) {
+        if (found && cursor != null) 
+        {
+            if (previous == null) 
+            {
                 head = head.getNext();
-            } else {
+            }
+            else 
+            {
                 previous.setNext(cursor.getNext());
             }
 
-            if (tail == cursor) {
+            if (tail == cursor) 
+            {
                 tail = previous;
             }
 
             numElements--;
         }
+        
         return found;
-
     }
 
     /**
@@ -191,7 +218,8 @@ public class LinkedBag<E extends Comparable<E>> {
      *
      * @return a Lister<E> using a copy of the linked list
      */
-    public Lister<E> iterator() {
+    public Lister<E> iterator() 
+    {
         // declare variables
         Node headOfListToReturn; // beginning of new "copied" list
         Node cursorOfListToCopy; // active node of list to copy
@@ -200,7 +228,8 @@ public class LinkedBag<E extends Comparable<E>> {
         // establish the copied list
         headOfListToReturn = null;
 
-        if (head != null) {
+        if (head != null) 
+        {
             // create the head of the new list
             headOfListToReturn = new Node(head.getData(), null);
             // use lastNodeOfListToReturn as a pointer to the last node in the copied list
@@ -208,7 +237,8 @@ public class LinkedBag<E extends Comparable<E>> {
             // use currentCursor as the pointer to the existing list
             cursorOfListToCopy = head.getNext();
             // if we have a node...
-            while (cursorOfListToCopy != null) {
+            while (cursorOfListToCopy != null) 
+            {
                 // create a new node from the end of the new list
                 lastNodeOfListToReturn.setNext(new Node(cursorOfListToCopy.getData(), null));
                 // move lastNodeOfListToReturn to the new last node
@@ -217,6 +247,7 @@ public class LinkedBag<E extends Comparable<E>> {
                 cursorOfListToCopy = cursorOfListToCopy.getNext();
             }
         }
+        
         return new Lister(headOfListToReturn);
     }
 }

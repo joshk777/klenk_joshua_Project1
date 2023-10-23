@@ -3,31 +3,31 @@ package gamecharacter;
 import java.util.Scanner;
 
 /**
- *The Game Character driver is a driver program for creating and interacting with
- *various characters
+ * The GameCharacterDriver class allows users to interact with game characters,
+ * adding them to a bag, removing them from the bag, finding characters in the bag,
+ * and displaying the contents of the bag. It provides a command-line interface
+ * to perform these operations and manage game characters.
+ *
+ * This class serves as the main entry point for the program and contains the
+ * main method that drives the application.
  *
  @author Joshua Klenk
- @version 1.0
+ @version 1.1
  */
 public class GameCharacterDriver 
 {
 
     public static void main(String[] args) 
     {
-        //Instantiate the scanner object for user input.
+
         Scanner keyboard = new Scanner(System.in);
         
         int exit = 0;
         
-        String command, name, spell;
-        String nameToRemove, spellToRemove;
-        String nameToFind, spellToFind;
-        
-        int health, mana;
-        int healthToRemove, manaToRemove;
-        int healthToFind, manaToFind; 
+        String command, name, spell, nameToRemove, spellToRemove, nameToFind, spellToFind;
+        int health, mana, healthToRemove, manaToRemove, healthToFind, manaToFind;
 
-        LinkedBag<GameCharacter> gameCharacterBag = new LinkedBag<GameCharacter>(); // creates a linked bag
+        LinkedBag<GameCharacter> gameCharacterBag = new LinkedBag<GameCharacter>();
         
         while(exit != -1)
         {
@@ -137,7 +137,6 @@ public class GameCharacterDriver
                     System.out.println("Invalid command. Please try again.\n");
             }
         }
-        
         keyboard.close();
     }
 }

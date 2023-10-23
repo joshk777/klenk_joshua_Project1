@@ -30,9 +30,11 @@ public class Mage extends GameCharacter implements Comparable<GameCharacter>
     }
     
     /**
-    * setSpell updates the mages equipped spell
+    * Sets the spell of this Mage to the provided spell value.
     *
-    @param updateSpell The new spell to equip
+    * This method updates the spell attribute of the Mage to the given spell value.
+    *
+    * @param updateSpell The new spell to be assigned to the Mage.
     */
     public void setSpell(String updateSpell) 
     {
@@ -50,9 +52,11 @@ public class Mage extends GameCharacter implements Comparable<GameCharacter>
     }
 
     /**
-    * Retrieves the currently equipped spell
+    * Retrieves the current spell points of this Mage.
     *
-    @return The current equipped spell
+    * This method returns the current spell of the Mage as an String.
+    *
+    * @return The current spell of the Mage.
     */
     public String getSpell() 
     {
@@ -60,9 +64,11 @@ public class Mage extends GameCharacter implements Comparable<GameCharacter>
     }
 
     /**
-    * Retrieves the current mana points
+    * Retrieves the current mana points of this Mage.
     *
-    @return The current mana points
+    * This method returns the current mana points of the Mage as an integer.
+    *
+    * @return The current mana points of the Mage.
     */
     public int getMana() 
     {
@@ -70,16 +76,23 @@ public class Mage extends GameCharacter implements Comparable<GameCharacter>
     }
     
     /**
-    * Compares this GameCharacter to another GameCharacter based on their name and health.
+    * Compares this Mage to another Mage based on their spell and mana attributes.
     *
-    * @param anotherCharacter The GameCharacter to compare to.
-    * @return A negative integer if this character's name is less than anotherCharacter's name,
-    *         a positive integer if this character's name is greater,
-    *         and if the names are the same, it returns a negative integer if this character's health is lower,
-    *         a positive integer if this character's health is higher, or 0 if both names and health are equal.
-    * @throws ClassCastException if the provided object is not an instance of GameCharacter.
+    * This method is used to determine the relative order of two Mage objects. 
+    * It first compares their spells in a case-insensitive manner. 
+    * If the spells are equal, it then compares their mana values. 
+    * If both the spell and mana values are equal,
+    * the two Mages are considered equal.
+    *
+    * @param anotherCharacter The Mage object to compare to.
+    * @return A negative integer if this Mage's spell is less than
+    *         the other Mage's spell, a positive integer if it's greater, and if the
+    *         spells are the same, it returns a negative integer if this Mage's mana is
+    *         lower, a positive integer if it's higher, or 0 if both the spell and mana
+    *         values are equal.
+    * @throws ClassCastException if the provided object is not an instance of Mage.
     */
-    public int compareTo(Mage anotherCharacter) //throws ClassCastException
+    public int compareTo(Mage anotherCharacter) throws ClassCastException
     {
         int spellComparison;
 
@@ -92,7 +105,7 @@ public class Mage extends GameCharacter implements Comparable<GameCharacter>
 
         if (spellComparison == 0) 
         {
-            // If the names are equal, compare by health as a secondary criterion.
+            
             if (getMana() < anotherCharacter.getMana()) 
             {
                 return -1;
@@ -103,7 +116,7 @@ public class Mage extends GameCharacter implements Comparable<GameCharacter>
             } 
             else 
             {
-                return 0; // If spell and mana are equal, consider them equal.
+                return 0; 
             }
         } 
         else 
@@ -114,13 +127,13 @@ public class Mage extends GameCharacter implements Comparable<GameCharacter>
     
     /**
      * Indicates whether some other object is "equal to" this GameCharacter. Two
-     * GameCharacters are considered equal if their character names are the same
-     * (case-insensitive) and their health values are equal.
+     * Mage are considered equal if their character spells are the same
+     * (case-insensitive) and their mana values are equal.
      *
-     * @param obj The object to compare to this GameCharacter.
+     * @param obj The object to compare to this Mage.
      * @return true if the objects are equal, false otherwise.
      * @throws ClassCastException if the provided object is not an instance of
-     * GameCharacter.
+     * Mage.
      */
     @Override
     public boolean equals(Object obj) throws ClassCastException 

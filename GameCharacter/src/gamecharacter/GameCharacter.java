@@ -10,7 +10,6 @@ package gamecharacter;
  */
 public class GameCharacter implements Comparable<GameCharacter> 
 {
-
     private String characterName; //name of character.
     private int health; // The current health points of the character.
 
