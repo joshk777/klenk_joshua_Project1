@@ -1,11 +1,10 @@
 package gamecharacter;
-
 /**
  * The Mage class represents a specialized type of GameCharacter with magical abilities.
  * It extends the GameCharacter class and includes attributes and methods specific to mages.
  * 
  * @author Josh Klenk
- * @version 1.0
+ * @version 1.1
  */
 public class Mage extends GameCharacter implements Comparable<GameCharacter>
 {

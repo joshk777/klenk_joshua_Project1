@@ -1,5 +1,4 @@
 package gamecharacter;
-
 /**
  *
  * @author Joshua Klenk
@@ -40,12 +39,10 @@ public class LinkedBag<E extends Comparable<E>>
 
         if (head == null) 
         {
-            // If the list is empty, make the new element the head.
             head = newNode;
         } 
         else if (newElement.compareTo(head.getData()) <= 0) 
         {
-            // If the new element is less than or equal to the head, update the head.
             newNode.setNext(head);
             head = newNode;
         } 
@@ -190,7 +187,7 @@ public class LinkedBag<E extends Comparable<E>>
             }
         }
 
-        if (found && cursor != null) 
+        if (cursor != null && cursor.getData().equals(target))
         {
             if (previous == null) 
             {
@@ -205,8 +202,8 @@ public class LinkedBag<E extends Comparable<E>>
             {
                 tail = previous;
             }
-
             numElements--;
+            found = true;
         }
         
         return found;

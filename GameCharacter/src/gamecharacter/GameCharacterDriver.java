@@ -31,14 +31,13 @@ public class GameCharacterDriver
         
         while(exit != -1)
         {
-            System.out.println("Bag of GameCharacters");
-            System.out.println("Menus:");
+            System.out.println("\nBag of GameCharacters\n");
             System.out.println("A - Add a character to the bag.");
             System.out.println("R - Remove a character from the bag.");
             System.out.println("F - Find a character in the bag.");
             System.out.println("D - Display contents of the bag.");
             System.out.println("X - Exit");
-            
+            System.out.print("Enter Selection: ");
             command = keyboard.next().toUpperCase();
             
             switch(command)
@@ -56,8 +55,6 @@ public class GameCharacterDriver
                     Mage character = new Mage(name, health, mana,spell);
                     gameCharacterBag.add(character);
                     
-                    System.out.println("\n" + name + " added to the bag." + "\nHealth set to: " + health + 
-                                            "\nMana set to : " + mana + "\nSpell Chosen: " + spell + "\n");
                     break;
                 case "R":
                     System.out.print("\nEnter the name of the character to remove: ");
@@ -73,11 +70,13 @@ public class GameCharacterDriver
                     
                     if(gameCharacterBag.remove(characterToRemove))
                     {
-                        System.out.println(nameToRemove + "removed from the bag.\n");
+                        System.out.println("\n" + nameToRemove + " with " + healthToRemove + " health, " + manaToRemove +
+                                                " mana, and " + spellToRemove + " spell was removed from the bag.\n");
                     }
                     else
                     {
-                        System.out.println(nameToRemove + " not found in the bag.\n");
+                        System.out.println("\n" + nameToRemove + " with " + healthToRemove + " health, " + manaToRemove +
+                                                " mana, and " + spellToRemove + " spell was not removed!.\n");
                     }
                     break;
                 case "F":
@@ -94,15 +93,16 @@ public class GameCharacterDriver
                     
                     if (gameCharacterBag.exists(characterToFind)) 
                     {
-                        System.out.println(nameToFind + " exists in the bag.\n");
+                        System.out.println("\n" + nameToFind + " with " + healthToFind + " health, " + manaToFind +
+                                                " mana, and " + spellToFind + " spell is in the bag.\n");
                     } 
                     else 
                     {
-                        System.out.println(nameToFind + " does not exist in the bag.\n");
+                        System.out.println("\n" + nameToFind + " with " + healthToFind + " health, " + manaToFind +
+                                                " mana, and " + spellToFind + " spell is not in the bag.\n");
                     }
                     break;
                 case "D":
-                    System.out.println("\nBag contents:");
                     
                     Lister<GameCharacter> iterator = gameCharacterBag.iterator();
                     
@@ -111,22 +111,25 @@ public class GameCharacterDriver
                     while(iterator.hasNext())
                     {
                         GameCharacter characterToDisplay = iterator.next();
-                        System.out.println("\nCharacter Name: " + characterToDisplay.getName());
-                        System.out.println("Health Point: " + characterToDisplay.getHealth());
                         
                         if(characterToDisplay instanceof Mage)
                         {
                             Mage mageCharacterToDisplay = (Mage) characterToDisplay;
                             
-                            System.out.println("Mana Points: " + mageCharacterToDisplay.getMana());
-                            System.out.println("Spell: " + mageCharacterToDisplay.getSpell() + "\n");
+                            System.out.printf("[{Character Name: %s, Health: %d, Mana: %d, Spell: %s}], ", mageCharacterToDisplay.getName(), mageCharacterToDisplay.getHealth(), 
+                                                            mageCharacterToDisplay.getMana(), mageCharacterToDisplay.getSpell());
+                        }
+                        else
+                        {
+                            System.out.printf("[{Character Name: %s, Health: %d}], ", 
+                                                characterToDisplay.getName(), characterToDisplay.getHealth());
                         }
                     }
                     System.out.println("\nBag Size: " + gameCharacterBag.getSize() + "\n");
                     }
                     else
                     {
-                        System.out.print("Character Bag [--Empty--] \tSize: " + gameCharacterBag.getSize() + "\n");
+                        System.out.print("\nCharacter Bag [--Empty--] \tSize: " + gameCharacterBag.getSize() + "\n");
                     }
                     break;
                 case "X":
@@ -134,7 +137,7 @@ public class GameCharacterDriver
                     System.out.println("Good-Bye");
                     break;
                 default:
-                    System.out.println("Invalid command. Please try again.\n");
+                    System.out.println("\nInvalid Selection.\n");
             }
         }
         keyboard.close();
