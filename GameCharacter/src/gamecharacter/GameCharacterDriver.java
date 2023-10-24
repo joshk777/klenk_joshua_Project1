@@ -22,14 +22,12 @@ public class GameCharacterDriver
 
         Scanner keyboard = new Scanner(System.in);
         
-        int exit = 0;
-        
         String command, name, spell, nameToRemove, spellToRemove, nameToFind, spellToFind;
         int health, mana, healthToRemove, manaToRemove, healthToFind, manaToFind;
 
         LinkedBag<GameCharacter> gameCharacterBag = new LinkedBag<GameCharacter>();
         
-        while(exit != -1)
+        do
         {
             System.out.println("\nBag of GameCharacters\n");
             System.out.println("A - Add a character to the bag.");
@@ -133,13 +131,13 @@ public class GameCharacterDriver
                     }
                     break;
                 case "X":
-                    exit = -1;
+                  
                     System.out.println("Good-Bye");
                     break;
                 default:
                     System.out.println("\nInvalid Selection.\n");
             }
-        }
+        }while(!command.equalsIgnoreCase("X"));
         keyboard.close();
     }
 }
